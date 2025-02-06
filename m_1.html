@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentor-Mentee Dashboard</title>
+    <link rel="stylesheet" href="m.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            /*the container to be aligned center*/
+            margin-top: 10%;
+            display: flex;
+            padding: 20px;
+            justify-content: space-between;
+            align-items: center;
+            justify-items: center;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Left side: student details -->
+        <div class="student-details" id="studentDetails">
+            <img src="https://via.placeholder.com/100" alt="Student Image" id="studentImage">
+            <p id="studentName">Student Name: N/A</p>
+            <p id="studentFatherName">Father Name: N/A</p>
+            <p id="studentMotherName">Mother Name: N/A</p>
+            <p id="studentFatherMobile">Father Mobile: N/A</p>
+            <p id="studentMotherMobile">Mother Mobile: N/A</p>
+        </div>
+
+        <!-- Right side: pills with roll numbers -->
+        <div class="pill-container" id="pillContainer">
+            <!-- Pills will be dynamically generated here -->
+        </div>
+    </div>
+
+    <script src="m.js"></script>
+
+</body>
+</html>

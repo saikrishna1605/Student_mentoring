@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Results</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #d3e7ee;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #8c2323;
+      color: white;
+      padding: 10px 20px;
+      text-align: right;
+    }
+
+    header button {
+      background-color: #a80000;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #a63d3d;
+      padding: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+    }
+
+    .container {
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .table-container {
+      width: 60%;
+      background-color: #8c2323;
+      padding: 20px;
+      border-radius: 8px;
+      color: white;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table, th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #611717;
+    }
+
+    .chart-container {
+      width: 35%;
+    }
+
+    select {
+      padding: 8px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <button>Sign Out</button>
+  </header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Attendance</a>
+    <a href="#">Notices</a>
+    <a href="#">Events</a>
+    <a href="#">Fee Due</a>
+    <a href="#">Academics</a>
+  </nav>
+
+  <div class="container">
+    <div class="table-container">
+      <h2>Results</h2>
+      <label for="year-select">Year:</label>
+      <select id="year-select">
+        <option value="1">1st Year</option>
+        <option value="2">2nd Year</option>
+        <option value="3">3rd Year</option>
+        <option value="4">4th Year</option>
+      </select>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Sem-I</th>
+            <th>Sem-II</th>
+            <th>CGPA</th>
+          </tr>
+        </thead>
+        <tbody id="result-table-body">
+          <!-- Dynamic rows go here -->
+        </tbody>
+      </table>
+    </div>
+
+    <div class="chart-container">
+      <canvas id="cgpaChart"></canvas>
+    </div>
+  </div>
+
+  <script>
+    // Sample result data
+    const resultData = {
+      1: { sem1: 7.5, sem2: 7.8, cgpa: 7.65 },
+      2: { sem1: 8.0, sem2: 8.2, cgpa: 8.1 },
+      3: { sem1: 8.5, sem2: 8.7, cgpa: 8.6 },
+      4: { sem1: 9.0, sem2: 9.2, cgpa: 9.1 }
+    };
+
+    // Populate the table based on year selection
+    const yearSelect = document.getElementById('year-select');
+    const resultTableBody = document.getElementById('result-table-body');
+
+    function updateTable(year) {
+      resultTableBody.innerHTML = '';
+      const data = resultData[year];
+      if (data) {
+        const row = `<tr>
+                      <td>${year}st Year</td>
+                      <td>${data.sem1}</td>
+                      <td>${data.sem2}</td>
+                      <td>${data.cgpa}</td>
+                    </tr>`;
+        resultTableBody.innerHTML = row;
+      }
+    }
+
+    // Initialize the chart
+    const ctx = document.getElementById('cgpaChart').getContext('2d');
+    let cgpaChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['1st Year', '2nd Year', '3rd Year', '4th Year'],
+        datasets: [{
+          label: 'C-GPA / Year',
+          data: Object.values(resultData).map(item => item.cgpa),
+          backgroundColor: 'rgba(54, 162, 235, 0.2)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    // Event listener for year selection
+    yearSelect.addEventListener('change', (e) => {
+      const year = e.target.value;
+      updateTable(year);
+    });
+
+    // Default display for the first year
+    updateTable(1);
+  </script>
+</body>
+</html>

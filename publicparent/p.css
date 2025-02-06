@@ -1,0 +1,160 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.header {
+    background-color: #842A2A;
+    height: 69px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 20px;
+    color: white;
+}
+
+.header button {
+    background-color: #C43B3B;
+    color: #ffffff;
+    border: none;
+    padding: 5px 15px;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.nav-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+nav {
+    background-color: #f1f1f1;
+    padding: 10px;
+    width: 60%;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+nav a.active {
+    border-bottom: 2px solid black;
+}
+
+.content {
+    margin-top: 20px;
+    padding: 20px;
+}
+
+/*home details*/
+.details-box {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.student-details {
+    flex: 3;
+}
+
+.student-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.student-image img {
+    border-radius: 4%;
+    height: 160px;
+    width: 160px;
+}
+
+.student-details p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+
+/*atandance*/
+.attendance-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.dropdowns {
+    display: flex;
+    gap: 10px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+.table-container {
+    width: 60%;
+}
+.chart-container {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+.attendance-percentage {
+    margin-top: 20px;
+    font-weight: bold;
+}
+.bar-chart{
+    margin-top: 20px;
+}
+.pie-chart {
+    margin-top: 30px;
+}
+.flex-container {
+    display: flex;
+    gap: 20px; /* Adjust space between table and charts */
+}
+
+/* Make the visualizations (charts) container stay to the right of the table */
+.visualizations {
+    display: flex;
+    flex: 2;
+    flex-direction: column;
+    gap: 20px; /* Space between bar chart and pie chart */
+}
+.attendance-percentage {
+    margin-top: 20px;
+    font-weight: bold;
+}
+.pushAtt{
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+

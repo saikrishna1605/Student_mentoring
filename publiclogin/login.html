@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="login.css">
+    <style>
+        
+        #mov{
+            display: flex;
+            justify-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body style="background-color: #842A2A;">
+    <div class="container">
+        <div class="login-box" style="height: 557px;">
+            <h1 style="text-align: left; font-size:60px;">Login</h1>
+            <div id="mov">
+                <div class="slider" style="margin:0px; margin-bottom:8px;">
+                    <div class="slider-button"><p id="name">Parent</p></div>
+                </div>
+            </div>
+        <form action="/login">
+            <div id="the_user">
+                <div class="input-field">
+                    <input type="text" placeholder="Student roll number" id="rollNumber">
+                </div>
+                <button type="button" class="search-btn" onclick="par()">Search</button>
+                <div class="details">
+                    <p>Name:</p>
+                    <p>Department:</p>
+                    <p>Section:</p>
+                </div>
+            </div>
+            <div id="log">
+            <button class="next-btn" onclick=""><a href="" style="text-decoration: none; color: #fff; font-size: large;">Next</a></button>
+            </div>
+        </form>
+            <div class="link-container">
+                <a href="#" class="link">ADMIN</a>
+                <a href="#" class="link">MENTOR</a>
+            </div>
+        </div>
+    </div>
+    <script src="logins.js"></script>
+    <script src="m.js"></script>
+
+</body>
+</html>
