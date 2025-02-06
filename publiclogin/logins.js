@@ -1,40 +1,13 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const slider = document.querySelector('.slider');
-    const sliderButton = document.querySelector('.slider-button');
-    const nameText = document.getElementById("name");
     slider.addEventListener('click', () => toggleSlider());
 });
 
-async function par() { // Moved outside to make it global
-    const nameText = document.getElementById("name");
-    if (nameText.innerHTML === "Parent") {
-        const rollNumber = document.getElementById('rollNumber').value;
-        if (!rollNumber) return;
-        try {
-            const response = await fetch(`/students/${rollNumber}`);
-            console.log(response);
-            if (response.ok) {
-                const data = await response.json();
-                document.querySelector(".details").innerHTML = `
-                    <p>Name: ${data.student_name}</p>
-                    <p>Department: ${data.department}</p>
-                    <p>Section: ${data.section}</p>
-                `;
-                sessionStorage.setItem('studentData', JSON.stringify(data));
-                window.location.href = "p.html";
-            } else {
-                document.querySelector(".details").innerHTML = "<p>Student not found</p>";
-            }
-        } catch (error) {
-            console.error("Error fetching student data:", error);
-            document.querySelector(".details").innerHTML = "<p>Error fetching student data</p>";
-        }
-    }
-}
-
+// Function to toggle between Parent and Student mode
 function toggleSlider() {
     const sliderButton = document.querySelector('.slider-button');
     const nameText = document.getElementById("name");
+
     if (sliderButton.style.left === '0px' || sliderButton.style.left === '') {
         sliderButton.style.left = '100px';
         changeContent("Student");
@@ -43,38 +16,100 @@ function toggleSlider() {
                 <input type="text" placeholder="Email" id="Email">
             </div>
             <div class="input-field">
-                <input type="text" placeholder="Password" id="Password">
-            </div>`;
-        document.getElementById("log").innerHTML = `
-            <button class="next-btn" onclick="stud()">
-                <a href="" style="text-decoration: none; color: #fff; font-size: large;">Next</a>
-            </button>`;
+                <input type="password" placeholder="Password" id="Password">
+            </div>
+            <button class="next-btn" onclick="authenticateStudent()">Login</button>`;
     } else {
         sliderButton.style.left = '0px';
         changeContent("Parent");
         document.getElementById("the_user").innerHTML = `
             <div class="input-field">
-                <input type="text" placeholder="Student roll number" id="rollNumber" oninput="par()">
+                <input type="text" placeholder="Student roll number" id="rollNumber">
             </div>
-            <button type="button" class="search-btn" onclick="par()">Search</button>
-            <div class="details">
-                <p>Name:</p>
-                <p>Department:</p>
-                <p>Section:</p>
+            <button type="button" class="search-btn" onclick="fetchStudentDetails()">Search</button>
+            <div id="details" class="details">
+                <p><strong>Name:</strong> </p>
+                <p><strong>Department:</strong> </p>
+                <p><strong>Roll Number:</strong> </p>
             </div>`;
-        document.getElementById("log").innerHTML = `
-            <button class="next-btn">
-                <a href="" style="text-decoration: none; color: #fff; font-size: large;">Next</a>
-            </button>`;
-        par(); // Call par() when switching to Parent
     }
 }
 
+// Function to change role text
 function changeContent(role) {
-    const nameText = document.getElementById("name");
-    nameText.innerHTML = role;
+    document.getElementById("name").innerHTML = role;
 }
 
-function stud() {
-    window.location.href = "s_1.html";
+// **Fetch student details using roll number (for Parent mode)**
+async function fetchStudentDetails() {
+    const rollNumber = document.getElementById('rollNumber').value;
+
+    if (!rollNumber) {
+        alert("Please enter a roll number");
+        return;
+    }
+
+    try {
+        const response = await fetch(`http://localhost:5000/student/${rollNumber}`);
+        const data = await response.json();
+
+        if (response.status === 404) {
+            document.getElementById('details').innerHTML = `<p style="color: red;">Student not found</p>`;
+            return;
+        }
+
+        // Display student details in the "details" div
+        document.getElementById('details').innerHTML = `
+            <p><strong>Name:</strong> ${data.name}</p>
+            <p><strong>Department:</strong> ${data.department}</p>
+            <p><strong>Roll Number:</strong> ${data.rollNumber}</p>
+        `;
+
+        // Store student data in session storage for later use
+        sessionStorage.setItem('studentData', JSON.stringify(data));
+    } catch (error) {
+        console.error("Error fetching student data:", error);
+        document.getElementById('details').innerHTML = `<p style="color: red;">Error fetching data</p>`;
+    }
 }
+
+// **Authenticate student login (for Student mode)**
+async function authenticateStudent() {
+    const email = document.getElementById("Email").value;
+    const password = document.getElementById("Password").value;
+
+    if (!email || !password) {
+        alert("Please enter both Email and Password");
+        return;
+    }
+
+    try {
+        const response = await fetch("http://localhost:5000/authenticate", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, password }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            // Store student info and redirect
+            sessionStorage.setItem("studentData", JSON.stringify(data));
+            window.location.replace("/Student_mentoring/publicparent/p.html"); // Redirect to Student page
+        } else {
+            alert("Invalid Email or Password");
+        }
+    } catch (error) {
+        console.error("Error authenticating student:", error);
+        alert("Error connecting to the server");
+    }
+}
+
+// **Ensure going back redirects to login page instead of previous session**
+window.onload = function () {
+    if (window.location.pathname.includes("p.html")) {
+        window.history.pushState(null, null, "/Student_mentoring/publiclogin/login.html");
+    }
+};

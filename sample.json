@@ -1,0 +1,143 @@
+[
+    {
+      "rollNumber": "22B81A0501",
+      "name": "Sai Kiran Reddy",
+      "department": "Computer Science",
+      "email": "saikiran.reddy@gmail.com",
+      "password": "$2b$10$abc123xyz"
+    },
+    {
+      "rollNumber": "22B81A0502",
+      "name": "Lakshmi Prasanna",
+      "department": "Computer Science",
+      "email": "lakshmi.prasanna@gmail.com",
+      "password": "$2b$10$def456uvw"
+    },
+    {
+      "rollNumber": "22B81A0503",
+      "name": "Ravi Teja",
+      "department": "Electronics",
+      "email": "ravi.teja@gmail.com",
+      "password": "$2b$10$ghi789rst"
+    },
+    {
+      "rollNumber": "22B81A0504",
+      "name": "Divya Sri",
+      "department": "Mechanical",
+      "email": "divya.sri@gmail.com",
+      "password": "$2b$10$jkl012mno"
+    },
+    {
+      "rollNumber": "22B81A0505",
+      "name": "Venkatesh Babu",
+      "department": "Civil",
+      "email": "venkatesh.babu@gmail.com",
+      "password": "$2b$10$pqr345stu"
+    },
+    {
+      "rollNumber": "22B81A0506",
+      "name": "Sindhu Priya",
+      "department": "Computer Science",
+      "email": "sindhu.priya@gmail.com",
+      "password": "$2b$10$vwx678yza"
+    },
+    {
+      "rollNumber": "22B81A0507",
+      "name": "Mahesh Kumar",
+      "department": "Electrical",
+      "email": "mahesh.kumar@gmail.com",
+      "password": "$2b$10$bcd901efg"
+    },
+    {
+      "rollNumber": "22B81A0508",
+      "name": "Deepika Reddy",
+      "department": "Electronics",
+      "email": "deepika.reddy@gmail.com",
+      "password": "$2b$10$hij234klm"
+    },
+    {
+      "rollNumber": "22B81A0509",
+      "name": "Chaitanya Krishna",
+      "department": "Mechanical",
+      "email": "chaitanya.krishna@gmail.com",
+      "password": "$2b$10$npo567qrs"
+    },
+    {
+      "rollNumber": "22B81A0510",
+      "name": "Anusha Reddy",
+      "department": "Civil",
+      "email": "anusha.reddy@gmail.com",
+      "password": "$2b$10$tuv890wxy"
+    },
+    {
+      "rollNumber": "22B81A0511",
+      "name": "Raghavendra Rao",
+      "department": "Computer Science",
+      "email": "raghavendra.rao@gmail.com",
+      "password": "$2b$10$abc123xyz"
+    },
+    {
+      "rollNumber": "22B81A0512",
+      "name": "Pranitha K",
+      "department": "Electronics",
+      "email": "pranitha.k@gmail.com",
+      "password": "$2b$10$def456uvw"
+    },
+    {
+      "rollNumber": "22B81A0513",
+      "name": "Harsha Vardhan",
+      "department": "Mechanical",
+      "email": "harsha.vardhan@gmail.com",
+      "password": "$2b$10$ghi789rst"
+    },
+    {
+      "rollNumber": "22B81A0514",
+      "name": "Sneha Latha",
+      "department": "Civil",
+      "email": "sneha.latha@gmail.com",
+      "password": "$2b$10$jkl012mno"
+    },
+    {
+      "rollNumber": "22B81A0515",
+      "name": "Rahul Raj",
+      "department": "Computer Science",
+      "email": "rahul.raj@gmail.com",
+      "password": "$2b$10$pqr345stu"
+    },
+    {
+      "rollNumber": "22B81A0516",
+      "name": "Sravani G",
+      "department": "Electronics",
+      "email": "sravani.g@gmail.com",
+      "password": "$2b$10$vwx678yza"
+    },
+    {
+      "rollNumber": "22B81A0517",
+      "name": "Ramesh Naidu",
+      "department": "Mechanical",
+      "email": "ramesh.naidu@gmail.com",
+      "password": "$2b$10$bcd901efg"
+    },
+    {
+      "rollNumber": "22B81A0518",
+      "name": "Sandhya Rani",
+      "department": "Civil",
+      "email": "sandhya.rani@gmail.com",
+      "password": "$2b$10$hij234klm"
+    },
+    {
+      "rollNumber": "22B81A0519",
+      "name": "Ajay Kumar",
+      "department": "Electrical",
+      "email": "ajay.kumar@gmail.com",
+      "password": "$2b$10$npo567qrs"
+    },
+    {
+      "rollNumber": "22B81A0520",
+      "name": "Pooja Srinivas",
+      "department": "Computer Science",
+      "email": "pooja.srinivas@gmail.com",
+      "password": "$2b$10$tuv890wxy"
+    }
+  ]
+  
