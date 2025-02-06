@@ -52,11 +52,60 @@
             font-size: 20px;
         ">💬</button>
 
-    <script src="p.js">
-        
-        
+    <script src="p.js"></script>
+    <script>
+        function openChat() {
+            document.getElementById("chatbot").style.display = "block";
+        }
+
+        function closeChat() {
+            document.getElementById("chatbot").style.display = "none";
+        }
+
+        function sendMessage() {
+            let userInput = document.getElementById("user-input").value.trim();
+            let chatBody = document.getElementById("chatbot-body");
+
+            if (userInput === "") return;
+
+            let userMessage = `<div class="user-message">${userInput}</div>`;
+            chatBody.innerHTML += userMessage;
+
+            // Simulated chatbot response with dynamic replies
+            setTimeout(() => {
+                let botMessage = getChatbotResponse(userInput);
+                chatBody.innerHTML += botMessage;
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }, 500);
+
+            document.getElementById("user-input").value = "";
+        }
+
+        // Get chatbot response based on user input
+        function getChatbotResponse(input) {
+            let response = "I'm here to assist you with your student needs!";
+
+            if (/attendance/i.test(input)) {
+                response = "I can help you check your attendance. Please select your year and semester.";
+            } else if (/marks/i.test(input)) {
+                response = "I can help you with your academic marks. Do you want to see your results?";
+            } else if (/mentor/i.test(input)) {
+                response = "Your mentor is available to guide you. Would you like to know their contact information?";
+            } else if (/event/i.test(input)) {
+                response = "I can show upcoming events. Would you like to see the latest events?";
+            } else if (/notice/i.test(input)) {
+                response = "I can help you with notices. Are you looking for any specific notice?";
+            } else if (/fee/i.test(input)) {
+                response = "I can assist you with your fee details. Would you like to know the due fees?";
+            } else if (/home/i.test(input)) {
+                response = "Welcome to your student dashboard! Let me know what you need help with.";
+            } else {
+                response = "Sorry, I didn't quite understand that. Can you ask me something else?";
+            }
+
+            return `<div class="bot-message">${response}</div>`;
+        }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </body>
