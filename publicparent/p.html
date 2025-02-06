@@ -5,88 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard with Chatbot</title>
     <link rel="stylesheet" href="p.css">
-    <style>
-        /* Chatbot Styles */
-        .chatbot-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 350px;
-            max-height: 500px;
-            display: flex;
-            flex-direction: column;
-            background-color: #f9f9f9;
-            border: 2px solid #0078d7;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        .chatbot-header {
-            background-color: #0078d7;
-            color: white;
-            padding: 10px;
-            text-align: center;
-            font-size: 18px;
-        }
-
-        .chatbot-body {
-            flex: 1;
-            padding: 10px;
-            overflow-y: auto;
-            height: 300px;
-            background-color: white;
-        }
-
-        .chatbot-body p {
-            margin: 10px 0;
-        }
-
-        .user-message {
-            text-align: right;
-            color: white;
-            background: #0078d7;
-            padding: 5px 10px;
-            border-radius: 10px;
-            display: inline-block;
-        }
-
-        .bot-message {
-            text-align: left;
-            background: #e0e0e0;
-            padding: 5px 10px;
-            border-radius: 10px;
-            display: inline-block;
-        }
-
-        .chatbot-footer {
-        display: flex;
-        gap: 5px;
-        padding: 10px;
-        background-color: #f1f1f1;
-        flex-direction: row-reverse; /* Swap input and button positions */
-    }
-
-    .chatbot-footer input {
-        flex: 1;
-        padding: 8px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-    }
-
-    .chatbot-footer button {
-        padding: 8px;
-        background-color: #0078d7;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    .chatbot-footer button:hover {
-        background-color: #005fa3;
-    }
-    </style>
 </head>
 
 <body>
@@ -134,54 +52,12 @@
             font-size: 20px;
         ">💬</button>
 
-    <script>
-        function openChat() {
-            document.getElementById('chatbot').style.display = 'block';
-        }
-
-        function closeChat() {
-            document.getElementById('chatbot').style.display = 'none';
-        }
-
-        // Example chat responses
-        const responses = {
-            "hello": "Hello! How can I assist you today?",
-            "attendance": "Your attendance is currently 85%. Keep up the good work!",
-            "academics": "Would you like to know your academic results or CGPA?",
-            "fee": "There are no outstanding dues currently.",
-            "default": "I'm here to help! Please ask something related to academics, attendance, or fees."
-        };
-
-        function sendMessage() {
-            const userInput = document.getElementById('user-input').value.trim();
-            if (userInput) {
-                appendMessage(userInput, 'user-message');
-                generateBotResponse(userInput);
-                document.getElementById('user-input').value = '';
-            }
-        }
-
-        function appendMessage(message, className) {
-            const chatbotBody = document.getElementById('chatbot-body');
-            const messageElement = document.createElement('p');
-            messageElement.className = className;
-            messageElement.textContent = message;
-            chatbotBody.appendChild(messageElement);
-            chatbotBody.scrollTop = chatbotBody.scrollHeight;
-        }
-
-        function generateBotResponse(input) {
-            const lowercaseInput = input.toLowerCase();
-            const response = responses[lowercaseInput] || responses["default"];
-            setTimeout(() => {
-                appendMessage(response, 'bot-message');
-            }, 500);
-        }
-
-        function logout() {
-            sessionStorage.clear();
-            window.location.href = "login.html";
-        }
+    <script src="p.js">
+        
+        
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </body>
 </html>
