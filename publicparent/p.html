@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard with Chatbot</title>
+    <title>Dashboard with Groq Chatbot</title>
     <link rel="stylesheet" href="p.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
-
 <body>
     <div class="header">
         <button style="border-radius: 5px;" onclick="logout()">Sign Out</button>
@@ -28,14 +28,14 @@
     <!-- Chatbot UI -->
     <div class="chatbot-container" id="chatbot" style="display: none;">
         <div class="chatbot-header">
-            Chatbot Assistant
-            <button style="float:right; background: none; color:white;" onclick="closeChat()">✖</button>
+            Groq Chatbot Assistant
+            <button style="float: right; background: none; color: white;" onclick="closeChat()">&#10006;</button>
         </div>
-        <div class="chatbot-body" id="chatbot-body"></div>
-        <div class="chatbot-footer">
-            <input type="text" id="user-input" placeholder="Type your message..." />
-            <button onclick="sendMessage()" name="enter" id="enter">Send</button>
-        </div>
+        <div class="chatbot-body" id="chat-messages"></div>
+        <form id="chat-form" class="chatbot-footer">
+            <input type="text" id="chat-input" placeholder="Type your message..." required />
+            <button type="submit" id="enter">Send</button>
+        </form>
     </div>
 
     <!-- Button to Open Chatbot -->
@@ -53,7 +53,49 @@
         ">💬</button>
 
     <script src="p.js"></script>
+
     <script>
+        const apiKey = "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";  // Replace with your Groq API key
+        const groqApiEndpoint = "https://api.groq.com/openai/v1/chat/completions"; // Correct Groq API endpoint
+
+        document.getElementById("chat-form").addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const input = document.getElementById("chat-input");
+            const messages = document.getElementById("chat-messages");
+            const message = input.value.trim();
+            if (!message) return;
+
+            input.value = "";
+            messages.innerHTML += `<div class="message user-message">${message}</div>`;
+
+            try {
+                const response = await axios.post(
+                    groqApiEndpoint,
+                    {
+                        model: "llama-3.3-70b-versatile", // Correct model name, replace as per availability
+                        messages: [{ role: "user", content: message }],
+                    },
+                    {
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${apiKey}`,
+                        },
+                    }
+                );
+
+                const chatbotResponse = response.data.choices[0].message.content.trim();
+                messages.innerHTML += `<div class="message bot-message">${chatbotResponse}</div>`;
+
+            } catch (error) {
+                const errorMessage = error.response ? error.response.data.error.message : error.message;
+                messages.innerHTML += `<div class="message bot-message">Error: ${errorMessage}</div>`;
+                console.error("Error:", errorMessage);
+            }
+
+            messages.scrollTop = messages.scrollHeight;
+        });
+
         function openChat() {
             document.getElementById("chatbot").style.display = "block";
         }
@@ -62,51 +104,13 @@
             document.getElementById("chatbot").style.display = "none";
         }
 
-        function sendMessage() {
-            let userInput = document.getElementById("user-input").value.trim();
-            let chatBody = document.getElementById("chatbot-body");
-
-            if (userInput === "") return;
-
-            let userMessage = `<div class="user-message">${userInput}</div>`;
-            chatBody.innerHTML += userMessage;
-
-            // Simulated chatbot response with dynamic replies
-            setTimeout(() => {
-                let botMessage = getChatbotResponse(userInput);
-                chatBody.innerHTML += botMessage;
-                chatBody.scrollTop = chatBody.scrollHeight;
-            }, 500);
-
-            document.getElementById("user-input").value = "";
+        function logout() {
+            alert("You have been logged out.");
         }
 
-        // Get chatbot response based on user input
-        function getChatbotResponse(input) {
-            let response = "I'm here to assist you with your student needs!";
-
-            if (/attendance/i.test(input)) {
-                response = "I can help you check your attendance. Please select your year and semester.";
-            } else if (/marks/i.test(input)) {
-                response = "I can help you with your academic marks. Do you want to see your results?";
-            } else if (/mentor/i.test(input)) {
-                response = "Your mentor is available to guide you. Would you like to know their contact information?";
-            } else if (/event/i.test(input)) {
-                response = "I can show upcoming events. Would you like to see the latest events?";
-            } else if (/notice/i.test(input)) {
-                response = "I can help you with notices. Are you looking for any specific notice?";
-            } else if (/fee/i.test(input)) {
-                response = "I can assist you with your fee details. Would you like to know the due fees?";
-            } else if (/home/i.test(input)) {
-                response = "Welcome to your student dashboard! Let me know what you need help with.";
-            } else {
-                response = "Sorry, I didn't quite understand that. Can you ask me something else?";
-            }
-
-            return `<div class="bot-message">${response}</div>`;
+        function changeContent(section) {
+            document.getElementById("content").innerText = `You selected the ${section} section.`;
         }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 </body>
 </html>

@@ -67,6 +67,7 @@
     "glob": "^7.2.3",
     "glob-parent": "^5.1.2",
     "gopd": "^1.0.1",
+    "groq-sdk": "^0.15.0",
     "has-flag": "^4.0.0",
     "has-property-descriptors": "^1.0.2",
     "has-proto": "^1.0.3",
