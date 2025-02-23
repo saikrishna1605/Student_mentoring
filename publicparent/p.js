@@ -1,9 +1,12 @@
-document.addEventListener('DOMContentLoaded',()=> {
+document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('home').classList.add('active');
     changeContent('home');
 });
+
 const studentData = JSON.parse(sessionStorage.getItem('studentData'));
+
 function changeContent(section) {
+    console.log(section);
     // Remove 'active' class from all nav links
     document.querySelectorAll('nav a').forEach(link => {
         link.classList.remove('active');
@@ -32,8 +35,7 @@ function changeContent(section) {
                 <img src="https://via.placeholder.com/150" alt="Student Image">
             </div>
         </div>`;
-    } 
-    else if (section === 'academics') {
+    } else if (section === 'academics') {
         contentDiv.innerHTML = `
             <div class="results-container">
                 <h2>Academic Results</h2>
@@ -129,9 +131,7 @@ function changeContent(section) {
         });
     
         initializeCgpaChart();
-    }
-    
-    else if (section === 'attendance') {
+    } else if (section === 'attendance') {
         contentDiv.innerHTML = `<!-- Attendance content container -->
         <div class="attendance-container">
         <!-- Dropdowns for year and semester -->
@@ -362,9 +362,10 @@ updateAttendance();
     }
         printAtt(80,30);
     // Initially load home content
-    loadHomeContent();
+    changeContent('home');
     }
     else if (section === 'notices') {
+
         contentDiv.innerHTML = '<h2>Notices</h2><p>All notices will be listed here.</p>';
     } else if (section === 'events') {
         contentDiv.innerHTML = '<h2>Events</h2><p>Upcoming events will be shown here.</p>';
@@ -378,6 +379,3 @@ function logout() {
     // Redirect to the login page (you can change the URL here)
     window.location.href = "login.html";
 }
-
-
-

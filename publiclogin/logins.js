@@ -1,46 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const slider = document.querySelector('.slider');
-    slider.addEventListener('click', () => toggleSlider());
-});
-
-// Function to toggle between Parent and Student mode
-function toggleSlider() {
-    const sliderButton = document.querySelector('.slider-button');
-    const nameText = document.getElementById("name");
-
-    if (sliderButton.style.left === '0px' || sliderButton.style.left === '') {
-        sliderButton.style.left = '100px';
-        changeContent("Student");
-        document.getElementById("the_user").innerHTML = `
-            <div class="input-field">
-                <input type="text" placeholder="Email" id="Email">
-            </div>
-            <div class="input-field">
-                <input type="password" placeholder="Password" id="Password">
-            </div>
-            <button class="next-btn" onclick="authenticateStudent()">Login</button>`;
-    } else {
-        sliderButton.style.left = '0px';
-        changeContent("Parent");
-        document.getElementById("the_user").innerHTML = `
-            <div class="input-field">
-                <input type="text" placeholder="Student roll number" id="rollNumber">
-            </div>
-            <button type="button" class="search-btn" onclick="fetchStudentDetails()">Search</button>
-            <div id="details" class="details">
-                <p><strong>Name:</strong> </p>
-                <p><strong>Department:</strong> </p>
-                <p><strong>Roll Number:</strong> </p>
-            </div>`;
-    }
-}
-
-// Function to change role text
-function changeContent(role) {
-    document.getElementById("name").innerHTML = role;
-}
-
-// **Fetch student details using roll number (for Parent mode)**
+// Function to fetch student details using roll number
 async function fetchStudentDetails() {
     const rollNumber = document.getElementById('rollNumber').value;
 
@@ -73,10 +31,11 @@ async function fetchStudentDetails() {
     }
 }
 
-// **Authenticate student login (for Student mode)**
-async function authenticateStudent() {
-    const email = document.getElementById("Email").value;
-    const password = document.getElementById("Password").value;
+// Function to authenticate student login
+async function authenticateStudent(event) {
+    event.preventDefault();
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
     if (!email || !password) {
         alert("Please enter both Email and Password");
@@ -97,7 +56,7 @@ async function authenticateStudent() {
         if (response.ok) {
             // Store student info and redirect
             sessionStorage.setItem("studentData", JSON.stringify(data));
-            window.location.replace("/Student_mentoring/publicparent/p.html"); // Redirect to Student page
+            window.location.replace("/p.html"); // Redirect to Student page
         } else {
             alert("Invalid Email or Password");
         }
@@ -107,7 +66,7 @@ async function authenticateStudent() {
     }
 }
 
-// **Ensure going back redirects to login page instead of previous session**
+// Ensure going back redirects to login page instead of previous session
 window.onload = function () {
     if (window.location.pathname.includes("p.html")) {
         window.history.pushState(null, null, "/Student_mentoring/publiclogin/login.html");
