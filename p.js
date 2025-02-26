@@ -22,14 +22,15 @@ function changeContent(section) {
         contentDiv.innerHTML = `
         <div class="details-box">
             <div class="student-details">
-                <p><strong>Student Name:</strong> ${studentData.student_name}</p>
-                <p><strong>Student Roll Number:</strong> ${studentData.roll_number}</p>
+                <p><strong>Student Name:</strong> ${studentData.name}</p>
+                <p><strong>Student Roll Number:</strong> ${studentData.rollNumber}</p>
                 <p><strong>Department:</strong> ${studentData.department}</p>
                 <p><strong>Section:</strong> ${studentData.section}</p>
-                <p><strong>Mentor Name:</strong> ${studentData.mentor_name}</p>
-                <p><strong>Mentor Phone Number:</strong> ${studentData.mentor_phone_number}</p>
-                <p><strong>Academic Year Currently In:</strong> ${studentData.academic_year}</p>
-                <p><strong>Joining Year:</strong> ${studentData.joining_year}</p>
+                <!-- // <p><strong>Mentor Name:</strong> ${studentData.mentorName}</p>
+                // <p><strong>Mentor Phone Number:</strong> ${studentData.mentorPhoneNumber}</p>-->
+                <p><strong>Academic Year Currently In:</strong> ${studentData.academicYear}</p>
+                <p><strong>Joining Year:</strong> ${studentData.joiningYear}</p>
+                <p><strong>Regulations:</strong> ${studentData.regulations}</p>
             </div>
             <div class="student-image">
                 <img src="https://via.placeholder.com/150" alt="Student Image">
