@@ -43,17 +43,6 @@ h1 {
     font-size: 16px;
 }
 
-.link-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-.link {
-    color: #0078d7;
-    text-decoration: none;
-}
-
 .parent-check {
     margin-top: 20px;
     display: flex;
@@ -83,4 +72,30 @@ h1 {
 #details {
     margin-top: 10px;
     width: 100%;
+}
+
+.button-container {
+    display: inline-block;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    
+
+    
+}
+
+.button-container button {
+    padding: 10px 20px;
+    background-color: #0078d7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
+    gap: 30px;
+
 }

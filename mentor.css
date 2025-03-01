@@ -1,0 +1,331 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.header {
+    background-color: #842A2A;
+    height: 69px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 20px;
+    color: white;
+}
+
+.header button {
+    background-color: #C43B3B;
+    color: #ffffff;
+    border: none;
+    padding: 5px 15px;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.nav-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+nav {
+    background-color: #d52727d8;
+    padding: 10px;
+    width: 60%;
+    text-align: center;
+    border-radius: 8px;
+    
+}
+
+nav a {
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+nav a.active {
+    border-bottom: 2px solid black;
+}
+nav a:hover{
+    background-color: #ffffff86;
+    border-radius: 7px;
+}
+
+.content {
+    margin-top: 20px;
+    padding: 20px;
+}
+
+/*home details*/
+.details-box {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.student-details {
+    flex: 3;
+}
+
+.student-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.student-image img {
+    border-radius: 4%;
+    height: 160px;
+    width: 160px;
+}
+
+.student-details p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+
+/*atandance*/
+.attendance-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.dropdowns {
+    display: flex;
+    gap: 10px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+.table-container {
+    width: 60%;
+}
+.chart-container {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+.attendance-percentage {
+    margin-top: 20px;
+    font-weight: bold;
+}
+.bar-chart{
+    margin-top: 20px;
+}
+.pie-chart {
+    margin-top: 30px;
+}
+.flex-container {
+    display: flex;
+    gap: 20px; /* Adjust space between table and charts */
+}
+
+/* Make the visualizations (charts) container stay to the right of the table */
+.visualizations {
+    display: flex;
+    flex: 2;
+    flex-direction: column;
+    gap: 20px; /* Space between bar chart and pie chart */
+}
+.attendance-percentage {
+    margin-top: 20px;
+    font-weight: bold;
+}
+.pushAtt{
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Chatbot Styles */
+.chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 350px;
+    max-height: 500px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9;
+    border: 2px solid #0078d7;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.chatbot-header {
+    background-color: #0078d7;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.chatbot-body {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    height: 300px;
+    background-color: white;
+}
+
+.chatbot-body p {
+    margin: 10px 0;
+}
+
+.user-message {
+    text-align: right;
+    color: white;
+    background: #0078d7;
+    padding: 5px 10px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.bot-message {
+    text-align: left;
+    background: #e0e0e0;
+    padding: 5px 10px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.chatbot-footer {
+display: flex;
+gap: 5px;
+padding: 10px;
+background-color: #f1f1f1;
+flex-direction: row-reverse; /* Swap input and button positions */
+}
+
+.chatbot-footer input {
+flex: 1;
+padding: 8px;
+border: 1px solid #ddd;
+border-radius: 5px;
+}
+
+.chatbot-footer button {
+padding: 8px;
+background-color: #0078d7;
+color: white;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
+
+.chatbot-footer button:hover {
+background-color: #005fa3;
+}
+.academic-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.results-table {
+    width: 50%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border: 2px solid #000000;
+}
+
+.results-table th, .results-table td {
+    border: 1px solid #000000;
+    padding: 12px;
+    text-align: center;
+}
+
+.results-table th {
+    background-color: #b71c1c;
+    color: white;
+}
+
+.chart-container {
+    width: 450px;
+    height: 380px;
+}
+
+
+.visualizations {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px; /* Space between charts */
+    width: 100%;
+    height: 300px; /* Adjust as needed */
+    overflow: hidden; /* Prevents overflow */
+}
+
+canvas {
+    max-width: 100%;
+    height: 350px !important; /* Forces a set height */
+}
+.attendance-container {
+    padding: 10px;
+    overflow: hidden;
+}
+
+/*m_1.html*/
+.student-details {
+    width: 30%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.student-details img {
+    width: 100px;
+    height: 100px;
+    border-radius: 5%;
+}
+.student-details p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+.pill-container {
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.pill {
+    padding: 10px 20px;
+    height: 20px;
+    margin: 10px;
+    background-color: #a0a8a1;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.pill:hover {
+    background-color: #4f534f;
+    color: white;
+}

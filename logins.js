@@ -52,7 +52,7 @@ async function authenticateStudent(event) {
         });
 
         const data = await response.json();
-
+        
         if (response.ok) {
             // Store student info and redirect
             sessionStorage.setItem("studentData", JSON.stringify(data));
@@ -72,3 +72,8 @@ window.onload = function () {
         window.history.pushState(null, null, "/Student_mentoring/publiclogin/login.html");
     }
 };
+
+function mentor() {
+    // Function which redirects to mentor login page
+    window.location.href = "mentor.html";
+}

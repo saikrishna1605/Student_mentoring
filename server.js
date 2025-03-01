@@ -29,6 +29,17 @@ const studentSchema = new mongoose.Schema({
 
 const Student = mongoose.model('Student', studentSchema);
 
+// Define Mentor Schema
+const mentorSchema = new mongoose.Schema({
+    name: String,
+    id: String,
+    email: String,
+    department: String,
+    password: String // In a real application, passwords should be hashed
+});
+
+const Mentor = mongoose.model('Mentor', mentorSchema);
+
 // API endpoint to fetch student details by roll number
 app.get('/student/:rollNumber', async (req, res) => {
     try {
@@ -54,6 +65,25 @@ app.post('/authenticate', async (req, res) => {
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
+});
+
+// API endpoint to authenticate mentor login
+app.post('/authenticate-mentor', async (req, res) => {
+    const { email, password } = req.body;
+    try {
+        const mentor = await Mentor.findOne({ email, password });
+        if (!mentor) {
+            return res.status(401).json({ message: "Invalid Email or Password" });
+        }
+        res.json(mentor);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+
+// Serve the p.html file for any other requests
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'publicparent', 'p.html'));
 });
 
 // Start the server

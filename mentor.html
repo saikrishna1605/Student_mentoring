@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentor Admin</title>
+    <link rel="stylesheet" href="mentor.css">
+</head>
+<body>
+    <div class="header">
+        <button style="border-radius: 5px;" onclick="logout()">Sign Out</button>
+    </div>
+
+    <div class="nav-container">
+        <nav>
+            <a href="#" id="home" onclick="changeContent('home')">Home</a>
+            <a href="#" id="attendance" onclick="changeContent('attendance')">Attendance</a>
+            <a href="#" id="notices" onclick="changeContent('notices')">Notices</a>
+            <a href="#" id="events" onclick="changeContent('events')">Events</a>
+            <a href="#" id="feeDue" onclick="changeContent('feeDue')">Fee Due</a>
+            <a href="#" id="academics" onclick="changeContent('academics')">Academics</a>
+        </nav>
+    </div>
+
+    <div class="content" id="content"></div>
+
+    <script src="mentor.js"></script>
+</body>
+</html>
